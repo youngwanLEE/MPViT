@@ -1,0 +1,9 @@
+_BASE_: "../Base-RetinaNet.yaml"
+MODEL:
+  WEIGHTS: "https://dl.dropbox.com/s/wiqpwiw35k7t6z7/mpvit_base_d2.pth"
+  MPVIT:
+    NAME: "mpvit_base"
+    DROP_PATH: 0.4
+INPUT:
+  MIN_SIZE_TRAIN: (800,)
+OUTPUT_DIR: "output/retinanet_mpvit_base_1x"

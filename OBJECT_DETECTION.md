@@ -1,47 +1,11 @@
-# [MPViT](https://arxiv.org/abs/2112.11010) : Multi-Path Vision Transformer for Dense Prediction
+# MPViT on object detection and instance segmentation
 
-This repository inlcudes official implementations and model weights for [MPViT](https://arxiv.org/abs/2112.11010).
+We provide RetinaNet and Deformable DETR results for object detection and Mask R-CNN results for instance segmentation.
 
-[[`Arxiv`](https://arxiv.org/abs/2112.11010)] [[`BibTeX`](#CitingMPViT)]
+We implement RetinaNet and Mask R-CNN on top of [Detectron2](https://github.com/facebookresearch/detectron2) and Deformable DETR on top of the official [Deformable DETR code](https://github.com/fundamentalvision/Deformable-DETR).
+ 
 
-> **[MPViT : Multi-Path Vision Transformer for Dense Prediction](https://arxiv.org/abs/2112.11010)**<br>
-> :classical_building:️️:school:[Youngwan Lee](https://github.com/youngwanLEE), :classical_building:️️Jonghee Kim, :school:[Jeff Willette](https://jeffwillette.github.io/), :school:[Sung Ju Hwang](http://www.sungjuhwang.com/) <br>
-> ETRI:classical_building:️, KAIST:school: <br>
-
-
-## Abstract
-
-We explore **multi-scale patch embedding** and **multi-path structure**, constructing the **Multi-Path Vision
-Transformer (MPViT)**. MPViT embeds features of the same size (i.e., sequence length) with patches of different scales
-simultaneously by using overlapping convolutional patch embedding. Tokens of different scales are then independently fed
-into the Transformer encoders via multiple paths and the resulting features are aggregated, enabling both fine and
-coarse feature representations at the same feature level. Thanks to the diverse and multi-scale feature representations,
-our MPViTs scaling from Tiny(5M) to Base(73M) consistently achieve superior performance over state-of-the-art Vision
-Transformers on ImageNet classification, object detection, instance segmentation, and semantic segmentation. These
-extensive results demonstrate that MPViT can serve as a versatile backbone network for various vision tasks.
-
-
-<div align="center">
-  <img src="https://dl.dropbox.com/s/qsp5scrd9okl3pw/mpvit_plot1.png" width="850px" />
-</div>
-
-<div align="center">
-  <img src="https://dl.dropbox.com/s/dsaqd0cc9ryzqim/mpvit_plot2.png" width="850px" />
-</div>
-
-## Main results on ImageNet-1K
-
-:rocket: These all models are trained on **ImageNet-1K** with the same training recipe as [DeiT](https://github.com/facebookresearch/deit) and [CoaT](https://github.com/mlpc-ucsd/CoaT).
-
-| model | resolution | acc@1 | #params | FLOPs |                              weight                               |
-|:---:  |  :---:     | :---: |   :---: | :---: |:-----------------------------------------------------------------:|
-| MPViT-T |  224x224 | 78.2 | 5.8M   | 1.6G  | [weight](https://dl.dropbox.com/s/1cmquqyjmaeeg1n/mpvit_tiny.pth)  | 
-| MPViT-XS|  224x224 | 80.9 | 10.5M  | 2.9G  | [weight](https://dl.dropbox.com/s/vvpq2m474g8tvyq/mpvit_xsmall.pth) |
-| MPViT-S |  224x224 | 83.0 | 22.8M  | 4.7G  | [weight](https://dl.dropbox.com/s/y3dnmmy8h4npz7a/mpvit_small.pth)  |
-| MPViT-B |  224x224 | 84.3 | 74.8M  | 16.4G | [weight](https://dl.dropbox.com/s/la8w31m0apj2830/mpvit_base.pth) |
-
-
-## Main results on COCO object detection
+## Main results on RetinaNet and Mask R-CNN
 
 :rocket: All model are trained using *ImageNet-1K* [pretrained weights](GET_STARTED.md).
 
@@ -82,49 +46,3 @@ ResNet-50 | 44.5 | 50 |                                        -                
 CoaT-lite S | 47.0 | 50 |    [link](https://github.com/mlpc-ucsd/CoaT/tree/main/tasks/Deformable-DETR)     | 
 CoaT-S | 48.4 | 50|    [link](https://github.com/mlpc-ucsd/CoaT/tree/main/tasks/Deformable-DETR)     |
 MPViT-S | 49.0 | 50 | [link](https://dl.dropbox.com/s/omzvc4jaqcag540/deformable_detr_mpvit_small.pth) |
-
-## Main results on ADE20K Semantic segmentation
-
-All model are trained using ImageNet-1K pretrained weight.
-
-Please refer to [`semantic_segmentation/`](semantic_segmentation) for the details.
-
-| Backbone | Method | Crop Size | Lr Schd | mIoU | #params | FLOPs |                                   weight
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |:--------------------------------------------------------------------------:|
-| MPViT-S  | UperNet | 512x512 | 160K | 48.3 | 52M | 943G | [weight](https://dl.dropbox.com/s/5opqzboalok7lme/upernet_mpvit_small.pth) | 
-| MPViT-B  | UperNet | 512x512 | 160K | 50.3 | 105M | 1185G | [weight](https://dl.dropbox.com/s/shr88fojdcqvhpr/upernet_mpvit_base.pth)  |
-
-## Getting Started
-
-:raised_hand: We use `pytorch==1.7.0` `torchvision==0.8.1` `cuda==10.1` libraries on NVIDIA V100 GPUs. If you use different versions of `cuda`, you may obtain different accuracies, but the differences are negligible.
-
-- For **Image Classification**, please see [GET_STARTED.md](GET_STARTED.md).
-- For **Object Detection and Instance Segmentation**, please
-  see [OBJECT_DETECTION.md](OBJECT_DETECTION.md).
-- For **Semantic Segmentation**, please
-  see [semantic_segmentation/README.md](semantic_segmentation/README.md).
-
-## Acknowledgement
-
-This repository is built using the [Timm](https://github.com/rwightman/pytorch-image-models)
-library, [DeiT](https://github.com/facebookresearch/deit), [CoaT](https://github.com/mlpc-ucsd/CoaT), [Detectron2](https://github.com/facebookresearch/detectron2), [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) repositories.
-
-This work was supported by Institute of Information & Communications Technology Planning & Evaluation (IITP) grant
-funded by the Korean government (MSIT) (No. 2020-0-00004, Development of Previsional Intelligence based on Long-term
-Visual Memory Network and No. 2014-3-00123, Development of High Performance Visual BigData Discovery Platform for
-Large-Scale Realtime Data Analysis).
-
-## License
-
-Please refer to [MPViT LSA](LICENSE.md).
-
-## <a name="CitingMPViT"></a>Citing MPViT
-
-```BibTeX
-@article{lee2021mpvit,
-      title={MPViT: Multi-Path Vision Transformer for Dense Prediction}, 
-      author={Youngwan Lee and Jonghee Kim and Jeff Willette and Sung Ju Hwang},
-      year={2021},
-      journal={arXiv preprint arXiv:2112.11010}
-}
-```

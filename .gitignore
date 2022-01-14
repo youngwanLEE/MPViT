@@ -1,0 +1,44 @@
+# folder
+output/
+exps/
+data/
+detectron2/datasets/
+**/pretrained/
+**/work_dirs/
+**/output/
+
+*.jpg
+*.png
+
+
+# compilation and distribution
+__pycache__
+_ext
+*.pyc
+*.so
+*.dll
+*.egg-info/
+wheels/
+build/
+dist/
+
+# pytorch/python/numpy formats
+*.pth
+*.pkl
+*.npy
+
+# ipython/jupyter notebooks
+*.ipynb
+**/.ipynb_checkpoints/
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# Pycharm editor settings
+.idea
+.vscode
+.python-version
+
