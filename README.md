@@ -9,6 +9,9 @@ This repository inlcudes official implementations and model weights for [MPViT](
 > ETRI:classical_building:️, KAIST:school: <br>
 
 
+## News
+ 🎉 MPViT has been accepted in CVPR2022.
+
 ## Abstract
 
 We explore **multi-scale patch embedding** and **multi-path structure**, constructing the **Multi-Path Vision
@@ -121,10 +124,10 @@ Please refer to [MPViT LSA](LICENSE.md).
 ## <a name="CitingMPViT"></a>Citing MPViT
 
 ```BibTeX
-@article{lee2021mpvit,
+@inproceedings{lee2022mpvit,
       title={MPViT: Multi-Path Vision Transformer for Dense Prediction}, 
-      author={Youngwan Lee and Jonghee Kim and Jeff Willette and Sung Ju Hwang},
-      year={2021},
-      journal={arXiv preprint arXiv:2112.11010}
+      author={Youngwan Lee and Jonghee Kim and Jeffrey Willette and Sung Ju Hwang},
+      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+      year={2022}
 }
 ```
